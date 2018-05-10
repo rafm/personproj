@@ -1,0 +1,31 @@
+version: "3"
+services:
+  mysql:
+    image: mysql
+    container_name: mysql-person
+    ports:
+      - "3306"
+    networks:
+      - person-network
+    environment:
+      - MYSQL_ROOT_PASSWORD=12345
+      - MYSQL_DATABASE=person
+      
+  person-proj:
+    build:
+      dockerfile: ./Dockerfile
+      context: .
+    image: rmaia/person-project
+    container_name: person-proj
+    ports:
+      - "8080:8080"
+    networks:
+      - person-network
+    environment:
+      - DB_HOST=mysql-person
+    depends_on:
+      - mysql
+      
+networks:
+  person-network:
+    driver: bridge
