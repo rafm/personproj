@@ -54,6 +54,7 @@ public class PersonRestController {
 		return ResponseEntity.created(URI.create("/person/"+person.getId())).build();
 	}
 	
+	// TODO Concurrency
 	// TODO ETag HTTP 204
 	@PutMapping("/{id}")
 	public ResponseEntity<String> update(@PathVariable @Min(1) Integer id, @RequestBody @Valid Person person) {
@@ -68,6 +69,7 @@ public class PersonRestController {
 		return ResponseEntity.noContent().build();
 	}
 	
+	// TODO Concurrency
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> delete(@PathVariable @Min(1) Integer id) {
 		if (personRepository.existsById(id)) {
