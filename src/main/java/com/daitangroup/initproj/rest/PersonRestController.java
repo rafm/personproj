@@ -39,7 +39,7 @@ public class PersonRestController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Person> findById(@PathVariable Integer id) {
+	public ResponseEntity<Person> findById(@PathVariable @Min(1) Integer id) {
 		Optional<Person> result = personRepository.findById(id);
 		return result.isPresent() ? ResponseEntity.ok(result.get()) : ResponseEntity.notFound().build();
 	}
@@ -56,7 +56,7 @@ public class PersonRestController {
 	
 	// TODO ETag HTTP 204
 	@PutMapping("/{id}")
-	public ResponseEntity<String> update(@PathVariable Integer id, @RequestBody @Valid Person person) {
+	public ResponseEntity<String> update(@PathVariable @Min(1) Integer id, @RequestBody @Valid Person person) {
 		Optional<Person> result = personRepository.findById(id);
 		if (!result.isPresent()) {
 			return ResponseEntity.notFound().build(); 
@@ -69,7 +69,7 @@ public class PersonRestController {
 	}
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<String> delete(@PathVariable Integer id) {
+	public ResponseEntity<String> delete(@PathVariable @Min(1) Integer id) {
 		if (personRepository.existsById(id)) {
 			personRepository.deleteById(id);
 		}
