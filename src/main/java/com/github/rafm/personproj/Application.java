@@ -1,12 +1,12 @@
-package com.daitangroup.initproj;
+package com.github.rafm.personproj;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.daitangroup.initproj.model.Person;
-import com.daitangroup.initproj.repository.PersonRepository;
+import com.github.rafm.personproj.model.Person;
+import com.github.rafm.personproj.repository.PersonRepository;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {

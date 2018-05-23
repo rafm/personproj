@@ -1,9 +1,9 @@
-package com.daitangroup.initproj.repository;
+package com.github.rafm.personproj.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.daitangroup.initproj.model.Person;
+import com.github.rafm.personproj.model.Person;
 
 @Repository
 public interface PersonRepository extends JpaRepository<Person, Integer> {}
